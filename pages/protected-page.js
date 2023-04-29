@@ -12,7 +12,7 @@ export async function getServerSideProps(context) {
   if (!token) {
     return {
       redirect: {
-        destination: '/',
+        destination: '/auth/signup',
         permanent: false,
       },
     };

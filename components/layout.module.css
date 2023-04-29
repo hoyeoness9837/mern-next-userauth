@@ -1,0 +1,48 @@
+.section__container {
+    position: relative;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.section {
+    margin: auto;
+    padding: 40px;
+    padding-top: 40px;
+    text-align: center;
+}
+
+.container_col {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin: auto;
+}
+
+.container_row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.card {
+    padding: 1rem 1.2rem;
+    border-radius: var(--border-radius);
+    background: rgba(var(--card-rgb), 0);
+    border: 1px solid rgba(var(--card-border-rgb), 0);
+    transition: background 200ms, border 200ms;
+  }
+
+.navlinks {
+    margin-left: auto;
+    display: flex;
+}
+
+@media screen and (max-width: 768px) {
+    .navlinks {
+      margin-left: auto;
+      text-align: center;
+      display: inline-block;
+   }
+  }
