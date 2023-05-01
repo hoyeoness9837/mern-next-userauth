@@ -2,7 +2,6 @@ import * as React from 'react';
 import PropTypes from 'prop-types';
 import Document, { Html, Head, Main, NextScript } from 'next/document';
 import createEmotionServer from '@emotion/server/create-instance';
-import theme from '../src/theme';
 import createEmotionCache from '../src/createEmotionCache';
 
 export default function MyDocument(props) {
@@ -10,11 +9,7 @@ export default function MyDocument(props) {
 
   return (
     <Html lang='en'>
-      <Head>
-        <meta name='theme-color' content={theme.palette.primary.main} />
-        <link rel='shortcut icon' href='/favicon.ico' />
-        {emotionStyleTags}
-      </Head>
+      <Head>{emotionStyleTags}</Head>
       <body>
         <Main />
         <NextScript />
