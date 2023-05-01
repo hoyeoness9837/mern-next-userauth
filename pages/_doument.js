@@ -2,17 +2,17 @@ import * as React from 'react';
 import PropTypes from 'prop-types';
 import Document, { Html, Head, Main, NextScript } from 'next/document';
 import createEmotionServer from '@emotion/server/create-instance';
-import theme, { roboto } from '../src/theme';
+import theme from '../src/theme';
 import createEmotionCache from '../src/createEmotionCache';
 
 export default function MyDocument(props) {
   const { emotionStyleTags } = props;
 
   return (
-    <Html lang="en" className={roboto.className}>
+    <Html lang='en'>
       <Head>
-        <meta name="theme-color" content={theme.palette.primary.main} />
-        <link rel="shortcut icon" href="/favicon.ico" />
+        <meta name='theme-color' content={theme.palette.primary.main} />
+        <link rel='shortcut icon' href='/favicon.ico' />
         {emotionStyleTags}
       </Head>
       <body>
@@ -24,7 +24,6 @@ export default function MyDocument(props) {
 }
 
 MyDocument.getInitialProps = async (ctx) => {
-
   const originalRenderPage = ctx.renderPage;
   const cache = createEmotionCache();
   const { extractCriticalToChunks } = createEmotionServer(cache);
