@@ -9,11 +9,18 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emotion/cache": "^11.10.8",
+    "@emotion/react": "^11.10.8",
+    "@emotion/server": "^11.10.0",
+    "@emotion/styled": "^11.10.8",
+    "@mui/icons-material": "^5.11.16",
+    "@mui/material": "^5.12.2",
     "bcrypt": "^5.1.0",
     "mongoose": "^7.0.3",
     "next": "13.3.0",
     "next-auth": "^4.22.0",
     "next-connect": "^0.13.0",
+    "prop-types": "^15.8.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "validator": "^13.9.0"

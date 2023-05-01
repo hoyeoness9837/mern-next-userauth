@@ -1,7 +1,8 @@
 import { useState, useRef, useEffect } from 'react';
 import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/router';
-import Link from 'next/link';
+import { Button, Input, InputLabel, Alert } from '@mui/material';
+import styles from '../../components/layout.module.css';
 
 export default function SignIn() {
   const router = useRouter();
@@ -27,42 +28,37 @@ export default function SignIn() {
       email: enteredEmail,
       password: enteredPassword,
     });
+    console.log(response);
     if (response.ok) setStatus(true);
     setError(response.error);
   }
 
   return (
-    <section>
-      <h1>Log In</h1>
-      <form onSubmit={submitHandler}>
-        <div>
-          <label htmlFor='email'>Your Email</label>
-          <input type='email' id='email' required ref={emailInputRef} />
-        </div>
-        <div>
-          <label htmlFor='password'>Your Password</label>
-          <input
+    <section className={styles.section}>
+      <div className={styles.container_col}>
+        <h1>Login</h1>
+        <form onSubmit={submitHandler}>
+          <InputLabel htmlFor='email'>Your Email</InputLabel>
+          <Input type='email' id='email' required inputRef={emailInputRef} />
+
+          <InputLabel htmlFor='password'>Your Password</InputLabel>
+          <Input
             type='password'
             id='password'
             required
-            ref={passwordInputRef}
+            inputRef={passwordInputRef}
           />
-        </div>
-        <div>
-          <button>Login</button>
-        </div>
-      </form>
-      <Link href='/auth/signup'> You don't have account yet? Sign up</Link>
-      {error && (
-        <div>
-          <h3>{error}</h3>
-        </div>
-      )}
-      {status && (
-        <div>
-          <h3>You are successfully signed in.</h3>
-        </div>
-      )}
+          <hr />
+          <Button type='submit'>Login</Button>
+        </form>
+        <Button onClick={() => router.push('/auth/signup')}>
+          You don't have account yet? Sign up
+        </Button>
+        {error && <Alert severity='error'>{error}</Alert>}
+        {status && (
+          <Alert severity='success'>You are successfully signed in.</Alert>
+        )}
+      </div>
     </section>
   );
 }

@@ -13,13 +13,16 @@ async function createUser(req, res) {
     if (user) {
       res.status(400).json({
         message: 'You already have an account with this email.',
+        ok: false,
       });
     } else {
       await User.create(req.body);
-      res.status(200).json({ message: 'You are successfully signed up.' });
+      res
+        .status(200)
+        .json({ message: 'You are successfully signed up.', ok: true });
     }
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    res.status(500).json({ message: error.message, ok: false });
   }
 }
 

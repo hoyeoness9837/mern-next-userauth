@@ -19,7 +19,7 @@ export const isAdmin = async (req) => {
   return true;
 };
 
-// API MIDDLEWARE
+// API MIDDLEWARE - protected api route
 export const hasTokenMiddleware = async (req, res, next) => {
   const token = await getToken({ req, secret });
   if (!token) {

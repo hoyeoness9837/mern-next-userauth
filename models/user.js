@@ -13,13 +13,13 @@ const passwordValidOptions = {
 const userSchema = new mongoose.Schema({
   email: {
     type: String,
-    required: true,
+    required: [true, 'Please enter email.'],
     unique: [true, 'Account already exists.'],
     validate: [validator.isEmail, 'Please enter a valid email.'],
   },
   password: {
     type: String,
-    required: [true, 'Please enter your email.'],
+    required: true,
     validate: {
       validator: (value) =>
         validator.isStrongPassword(value, passwordValidOptions),

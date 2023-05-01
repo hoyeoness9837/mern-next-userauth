@@ -1,23 +1,20 @@
-import { useSession, signOut } from 'next-auth/react';
-import Link from 'next/link';
+import { useSession } from 'next-auth/react';
+import styles from '../components/layout.module.css';
 
 export default function Home() {
   const { data: session, status } = useSession();
 
   return (
-    <section>
-      {status === 'authenticated' ? (
-        <div>
-          Signed in as {session.user.email}
-          <Link href='/protected-page'>Protected Page</Link>
-          <button onClick={() => signOut()}>Sign out</button>
-        </div>
-      ) : (
-        <div>
-          <Link href='/auth/signin'>Sign in</Link>
-          <Link href='/auth/signup'>Sign up first</Link>
-        </div>
-      )}
+    <section className={styles.section}>
+      <div className={styles.container_col}>
+        {status === 'authenticated' ? (
+          <h2>Signed in as {session.user.email}</h2>
+        ) : (
+          <>
+            <h2>Welcome, Feel free to try!</h2>
+          </>
+        )}
+      </div>
     </section>
   );
 }
