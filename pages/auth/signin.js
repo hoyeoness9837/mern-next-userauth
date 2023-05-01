@@ -28,8 +28,7 @@ export default function SignIn() {
       email: enteredEmail,
       password: enteredPassword,
     });
-    console.log(response);
-    if (response.ok) setStatus(true);
+    setStatus(response.ok);
     setError(response.error);
   }
 
